@@ -1,0 +1,23 @@
+project:
+  name: dock-vision
+
+data:
+  raw_dir: data/raw          # downloaded datasets (Roboflow zips etc.)
+  synthetic_dir: data/synthetic
+  merged_dir: data/merged    # train/val split, fed to YOLO
+  eval_dir: data/eval        # real-world frames for final evaluation
+  classes: [pallet, box]
+
+synthetic:
+  num_scenes: 300
+  width: 1280
+  height: 720
+  scene_types: [dock, rack]
+  min_objects: 2
+  max_objects: 7
+
+training:
+  model: yolo11n.pt          # nano: fast baseline; switch to yolo11s for final
+  imgsz: 640
+  epochs: 100
+  batch: 16
